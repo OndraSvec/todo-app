@@ -1,0 +1,57 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border: none;
+  outline: none;
+}
+
+:root {
+  --padding-header: clamp(0.5rem, 0.5rem + 3vw, 1.5rem);
+  --nav-menu: calc(var(--padding-header) * 1.5);
+  --header-h1: calc(var(--padding-header) * 2);
+  --main-blue: #38bdf8;
+}
+
+html {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+body {
+  flex-grow: 1;
+  font-family: "Roboto Mono", monospace;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  padding-block: calc(var(--padding-header) * 0.25);
+  padding-inline: var(--padding-header);
+  background-color: var(--main-blue);
+  color: white;
+}
+
+header > button:has(.nav-menu) {
+  background-color: transparent;
+}
+
+header > button > .nav-menu {
+  width: var(--nav-menu);
+  height: auto;
+  fill: white;
+}
+
+header > h1 {
+  text-align: center;
+  font-size: var(--header-h1);
+  margin-inline: auto;
+}
+
+header > h1 > .upside-down {
+  display: inline-block;
+  transform: scale(1, -1);
+}
