@@ -21,6 +21,15 @@ export default function createTask(title, description, dueDate, priority) {
   function setPriority(newPriority) {
     taskPriority = newPriority;
   }
+
+  const taskInfo = {
+    Title: getTitle(),
+    Description: getDescription(),
+    DueDate: getDueDate(),
+    Priority: getPriority(),
+  };
+  const getInfo = () => taskInfo;
+
   return {
     getTitle,
     setTitle,
@@ -30,5 +39,6 @@ export default function createTask(title, description, dueDate, priority) {
     setDueDate,
     getPriority,
     setPriority,
+    getInfo,
   };
 }

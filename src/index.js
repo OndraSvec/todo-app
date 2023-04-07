@@ -1,14 +1,7 @@
-import createTask from "./components/tasks";
-
-const firstTask = createTask(
-  "Call Mike",
-  "Ask him about that thing.",
-  "Today",
-  "High"
-);
+import { firstTask, secondTask, firstProject } from "./components/todolist";
 
 console.log(
-  firstTask.getTitle(),
-  firstTask.setTitle("Call Amber"),
-  firstTask.getTitle()
+  firstProject.setTasks(firstTask.getInfo()),
+  firstProject.setTasks(secondTask.getInfo()),
+  firstProject.getTasks()
 );
