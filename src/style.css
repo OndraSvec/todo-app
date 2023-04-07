@@ -13,6 +13,7 @@
   --nav-menu: calc(var(--padding-header) * 1.5);
   --header-h1: calc(var(--padding-header) * 2);
   --main-blue: #38bdf8;
+  --gradient-blue: #7dd3fc;
 }
 
 html {
@@ -31,7 +32,11 @@ header {
   align-items: center;
   padding-block: calc(var(--padding-header) * 0.25);
   padding-inline: var(--padding-header);
-  background-color: var(--main-blue);
+  background: linear-gradient(
+    to bottom,
+    var(--main-blue),
+    var(--gradient-blue)
+  );
   color: white;
 }
 
