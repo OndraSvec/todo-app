@@ -1,0 +1,1 @@
+(()=>{"use strict";const t=function(t,e,i,n){let o="Call Mike",l="Ask him about that thing.",s="Today",c="High";return{getTitle:()=>o,setTitle:function(t){o=t},getDescription:()=>l,setDescription:function(t){l=t},getDueDate:()=>s,setDueDate:function(t){s=t},getPriority:()=>c,setPriority:function(t){c=t}}}();console.log(t.getTitle(),t.setTitle("Call Amber"),t.getTitle())})();
