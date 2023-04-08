@@ -8,9 +8,9 @@ export default function createProject(name) {
   }
 
   const getTasks = () => tasks;
-  function setTasks(task) {
+  function addTasks(task) {
     tasks.push(task);
   }
 
-  return { getProjectName, setProjectName, getTasks, setTasks };
+  return { getProjectName, setProjectName, getTasks, addTasks };
 }

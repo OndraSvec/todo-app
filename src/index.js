@@ -1,7 +1,7 @@
 import { firstTask, secondTask, firstProject } from "./components/todolist";
 
 console.log(
-  firstProject.setTasks(firstTask.getInfo()),
-  firstProject.setTasks(secondTask.getInfo()),
+  firstProject.addTasks(firstTask.getInfo()),
+  firstProject.addTasks(secondTask.getInfo()),
   firstProject.getTasks()
 );
