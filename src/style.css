@@ -14,6 +14,8 @@
   --nav-menu: calc(var(--padding-header) * 1.5);
   --header-h1: calc(var(--padding-header) * 2);
   --side-bar: clamp(10rem, 10rem + 8vw, 17.5rem);
+  --side-bar-calendar-height: clamp(3.5rem, 3.5rem + 5vw, 6rem);
+  --side-bar-h2: calc(var(--header-h1) * 0.6);
   --main-blue: #38bdf8;
   --gradient-blue: #7dd3fc;
   --sidebar-blue-gradient: #bae6fd;
@@ -22,6 +24,11 @@
   --sidebar-gap: clamp(0.25rem, 0.25rem + 2vw, 0.75rem);
   --sidebar-brd-rad: 0.25rem;
   --sidebar-fs-main: calc(var(--nav-menu) * 0.6);
+  --sidebar-form-input-height: calc(var(--side-bar-calendar-height) * 0.5);
+  --item-add-color: #22c55e;
+  --item-add-color-dark: #16a34a;
+  --item-cancel-color: #f43f5e;
+  --item-cancel-color-dark: #e11d48;
 }
 
 html {
@@ -91,7 +98,11 @@ main > .side-bar {
   color: white;
 }
 
-main > .side-bar > button:has(.side-bar-icon) {
+main > .side-bar > .side-bar-calendar {
+  height: var(--side-bar-calendar-height);
+}
+
+main > .side-bar > .side-bar-calendar > button:has(.side-bar-icon) {
   width: 100%;
   display: grid;
   grid-template-columns: auto 1fr;
@@ -105,14 +116,211 @@ main > .side-bar > button:has(.side-bar-icon) {
   background-color: transparent;
 }
 
-main > .side-bar > button:has(.side-bar-icon):hover {
+main > .side-bar > .side-bar-calendar > button:has(.side-bar-icon):hover,
+main > .side-bar > .side-bar-calendar > button:has(.side-bar-icon):focus {
   background-color: var(--main-blue);
   border-radius: var(--sidebar-brd-rad);
   cursor: pointer;
 }
 
-main > .side-bar > button > .side-bar-icon {
+main > .side-bar > .side-bar-calendar > button > .side-bar-icon {
   width: calc(var(--nav-menu) * 0.8);
   height: auto;
   fill: white;
+}
+
+main > .side-bar > .projects {
+  min-height: calc(
+    100vh - (var(--header-height) + var(--side-bar-calendar-height))
+  );
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+main > .side-bar > .projects > h2 {
+  font-size: var(--side-bar-h2);
+  color: var(--main-blue);
+}
+
+main > .side-bar > .projects > .new-project > .add-project {
+  width: 100%;
+  padding-block: calc(var(--padding-header) * 0.35);
+  font-size: var(--sidebar-fs-main);
+  font-weight: 500;
+  text-align: left;
+  background-color: transparent;
+  color: var(--main-blue);
+}
+
+main > .side-bar > .projects > .new-project > .add-project:hover,
+main > .side-bar > .projects > .new-project > .add-project:focus {
+  font-weight: 700;
+  cursor: pointer;
+}
+
+main > .side-bar > .projects > .new-project > .np-form {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--sidebar-gap) * 0.75);
+  display: none;
+}
+
+main > .side-bar > .projects > .new-project > .np-form > .np-form-input {
+  height: var(--sidebar-form-input-height);
+  position: relative;
+}
+
+main
+  > .side-bar
+  > .projects
+  > .new-project
+  > .np-form
+  > .np-form-input
+  > input {
+  width: 100%;
+  height: 100%;
+  padding-top: calc(var(--sidebar-form-input-height) * 0.4);
+  color: var(--main-blue);
+  border-radius: var(--sidebar-brd-rad);
+}
+
+main
+  > .side-bar
+  > .projects
+  > .new-project
+  > .np-form
+  > .np-form-input
+  > label {
+  color: var(--sidebar-blue-gradient);
+  position: absolute;
+  left: 0;
+  top: 0;
+  translate: 0% 50%;
+  font-size: calc(var(--sidebar-fs-main) * 0.75);
+  transition: translate 0.15s ease-in;
+}
+
+main
+  > .side-bar
+  > .projects
+  > .new-project
+  > .np-form
+  > .np-form-input
+  > input:focus
+  + label,
+main
+  > .side-bar
+  > .projects
+  > .new-project
+  > .np-form
+  > .np-form-input
+  > input:valid
+  + label {
+  translate: 0% 0%;
+}
+
+main > .side-bar > .projects > .new-project > .np-form > .np-form-buttons {
+  height: calc(var(--sidebar-form-input-height) * 0.75);
+  display: flex;
+  gap: calc(var(--sidebar-gap) * 0.5);
+}
+
+main
+  > .side-bar
+  > .projects
+  > .new-project
+  > .np-form
+  > .np-form-buttons
+  > button {
+  flex-grow: 1;
+  color: white;
+  font-size: calc(var(--sidebar-fs-main) * 0.75);
+  border-radius: var(--sidebar-brd-rad);
+}
+
+main
+  > .side-bar
+  > .projects
+  > .new-project
+  > .np-form
+  > .np-form-buttons
+  > #project-add-btn {
+  background-color: var(--item-add-color);
+}
+
+main
+  > .side-bar
+  > .projects
+  > .new-project
+  > .np-form
+  > .np-form-buttons
+  > #project-add-btn:hover,
+main
+  > .side-bar
+  > .projects
+  > .new-project
+  > .np-form
+  > .np-form-buttons
+  > #project-add-btn:focus {
+  background-color: var(--item-add-color-dark);
+}
+
+main
+  > .side-bar
+  > .projects
+  > .new-project
+  > .np-form
+  > .np-form-buttons
+  > #project-add-cancel-btn {
+  background-color: var(--item-cancel-color);
+}
+
+main
+  > .side-bar
+  > .projects
+  > .new-project
+  > .np-form
+  > .np-form-buttons
+  > #project-add-cancel-btn:hover,
+main
+  > .side-bar
+  > .projects
+  > .new-project
+  > .np-form
+  > .np-form-buttons
+  > #project-add-cancel-btn:focus {
+  background-color: var(--item-cancel-color-dark);
+}
+
+main
+  > .side-bar
+  > .projects
+  > .new-project
+  > .np-form
+  > .np-form-buttons
+  > #project-add-btn:hover,
+main
+  > .side-bar
+  > .projects
+  > .new-project
+  > .np-form
+  > .np-form-buttons
+  > #project-add-btn:focus,
+main
+  > .side-bar
+  > .projects
+  > .new-project
+  > .np-form
+  > .np-form-buttons
+  > #project-add-cancel-btn:hover,
+main
+  > .side-bar
+  > .projects
+  > .new-project
+  > .np-form
+  > .np-form-buttons
+  > #project-add-cancel-btn:focus {
+  font-weight: 700;
+  cursor: pointer;
 }
