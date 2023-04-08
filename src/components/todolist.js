@@ -37,4 +37,4 @@ firstProject.getTasks();
 
 createProjects.addProjects(firstProject.getTasks());
 
-export { createProjects };
+export default createProjects;

@@ -1,3 +1,3 @@
-import { createProjects } from "./components/todolist";
+import createProjects from "./components/todolist";
 
 console.log(createProjects.getProjects());
