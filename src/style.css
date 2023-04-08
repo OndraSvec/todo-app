@@ -10,10 +10,18 @@
 
 :root {
   --padding-header: clamp(0.5rem, 0.5rem + 3vw, 1.5rem);
+  --header-height: clamp(2.5rem, 2.5rem + 3vw, 4.5rem);
   --nav-menu: calc(var(--padding-header) * 1.5);
   --header-h1: calc(var(--padding-header) * 2);
+  --side-bar: clamp(10rem, 10rem + 8vw, 17.5rem);
   --main-blue: #38bdf8;
   --gradient-blue: #7dd3fc;
+  --sidebar-blue-gradient: #bae6fd;
+  --sidebar-blue: #e0f2fe;
+  --sidebar-blue-white: #f0f9ff;
+  --sidebar-gap: clamp(0.25rem, 0.25rem + 2vw, 0.75rem);
+  --sidebar-brd-rad: 0.25rem;
+  --sidebar-fs-main: calc(var(--nav-menu) * 0.6);
 }
 
 html {
@@ -30,6 +38,7 @@ body {
 header {
   display: flex;
   align-items: center;
+  height: var(--header-height);
   padding-block: calc(var(--padding-header) * 0.25);
   padding-inline: var(--padding-header);
   background: linear-gradient(
@@ -59,4 +68,51 @@ header > h1 {
 header > h1 > .upside-down {
   display: inline-block;
   transform: scale(1, -1);
+}
+
+main {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  min-height: calc(100vh - var(--header-height));
+}
+
+main > .side-bar {
+  width: var(--side-bar);
+  height: 100%;
+  padding-inline: var(--padding-header);
+  background: linear-gradient(
+    to bottom,
+    var(--gradient-blue),
+    var(--sidebar-blue-gradient) 20%,
+    var(--sidebar-blue) 45%,
+    var(--sidebar-blue-white) 70%,
+    white
+  );
+  color: white;
+}
+
+main > .side-bar > button:has(.side-bar-icon) {
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: var(--sidebar-gap);
+  padding-block: calc(var(--padding-header) * 0.35);
+  text-align: left;
+  font-size: var(--sidebar-fs-main);
+  font-weight: 500;
+  color: white;
+  background-color: transparent;
+}
+
+main > .side-bar > button:has(.side-bar-icon):hover {
+  background-color: var(--main-blue);
+  border-radius: var(--sidebar-brd-rad);
+  cursor: pointer;
+}
+
+main > .side-bar > button > .side-bar-icon {
+  width: calc(var(--nav-menu) * 0.8);
+  height: auto;
+  fill: white;
 }
