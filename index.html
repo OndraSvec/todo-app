@@ -26,30 +26,59 @@
     </header>
     <main>
       <div class="side-bar">
-        <button>
-          <svg
-            class="side-bar-icon"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M7,10H12V15H7M19,19H5V8H19M19,3H18V1H16V3H8V1H6V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,2 0 0,0 19,3Z"
-            />
-          </svg>
-          Today
-        </button>
-        <button>
-          <svg
-            class="side-bar-icon"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M6 1H8V3H16V1H18V3H19C20.11 3 21 3.9 21 5V19C21 20.11 20.11 21 19 21H5C3.89 21 3 20.1 3 19V5C3 3.89 3.89 3 5 3H6V1M5 8V19H19V8H5M7 10H17V12H7V10Z"
-            />
-          </svg>
-          This Week
-        </button>
+        <div class="side-bar-calendar">
+          <button>
+            <svg
+              class="side-bar-icon"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M7,10H12V15H7M19,19H5V8H19M19,3H18V1H16V3H8V1H6V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,2 0 0,0 19,3Z"
+              />
+            </svg>
+            Today
+          </button>
+          <button>
+            <svg
+              class="side-bar-icon"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M6 1H8V3H16V1H18V3H19C20.11 3 21 3.9 21 5V19C21 20.11 20.11 21 19 21H5C3.89 21 3 20.1 3 19V5C3 3.89 3.89 3 5 3H6V1M5 8V19H19V8H5M7 10H17V12H7V10Z"
+              />
+            </svg>
+            This Week
+          </button>
+        </div>
+        <div class="projects">
+          <h2>Projects</h2>
+          <div class="new-project">
+            <button class="add-project">
+              <span class="plus">+</span> Add new project
+            </button>
+            <div class="np-form">
+              <div class="np-form-input">
+                <input
+                  type="text"
+                  id="np-input"
+                  name="np-input"
+                  value=""
+                  autocomplete="off"
+                  required
+                />
+                <label for="np-input"
+                  ><span class="label-name">Project name</span></label
+                >
+              </div>
+              <div class="np-form-buttons">
+                <button id="project-add-btn">Add</button>
+                <button id="project-add-cancel-btn">Cancel</button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="main-content"></div>
     </main>
