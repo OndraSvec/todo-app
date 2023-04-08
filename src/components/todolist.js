@@ -1,6 +1,20 @@
 import createTask from "./tasks";
 import createProject from "./projects";
 
+const createProjects = (() => {
+  const projects = [];
+
+  const getProjects = () => projects;
+  function addProjects(project) {
+    projects.push(project);
+  }
+
+  return {
+    getProjects,
+    addProjects,
+  };
+})();
+
 const firstTask = createTask(
   "Call Mike",
   "Ask him about that thing.",
@@ -17,4 +31,10 @@ const secondTask = createTask(
 
 const firstProject = createProject("Call");
 
-export { firstTask, secondTask, firstProject };
+firstProject.addTasks(firstTask.getInfo());
+firstProject.addTasks(secondTask.getInfo());
+firstProject.getTasks();
+
+createProjects.addProjects(firstProject.getTasks());
+
+export { createProjects };

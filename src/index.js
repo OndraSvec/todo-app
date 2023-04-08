@@ -1,7 +1,3 @@
-import { firstTask, secondTask, firstProject } from "./components/todolist";
+import { createProjects } from "./components/todolist";
 
-console.log(
-  firstProject.addTasks(firstTask.getInfo()),
-  firstProject.addTasks(secondTask.getInfo()),
-  firstProject.getTasks()
-);
+console.log(createProjects.getProjects());
