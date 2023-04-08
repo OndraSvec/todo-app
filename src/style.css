@@ -66,6 +66,10 @@ header > button > .nav-menu {
   fill: white;
 }
 
+header > button > .nav-menu:hover {
+  cursor: pointer;
+}
+
 header > h1 {
   text-align: center;
   font-size: var(--header-h1);
@@ -96,6 +100,12 @@ main > .side-bar {
     white
   );
   color: white;
+  translate: -100%;
+  transition: translate 0.2s ease-in;
+}
+
+main > .side-bar.slideIn {
+  translate: 0%;
 }
 
 main > .side-bar > .side-bar-calendar {
