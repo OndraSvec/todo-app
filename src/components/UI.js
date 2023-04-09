@@ -3,11 +3,14 @@ import createProjects from "./todolist";
 
 export default function events() {
   const navMenu = document.getElementById("navMenu");
-  navMenu.addEventListener("click", toggleSideBar);
+  navMenu.addEventListener("click", toggleSBMC);
 
-  function toggleSideBar() {
+  function toggleSBMC() {
     const sideBar = document.querySelector(".side-bar");
     sideBar.classList.toggle("slideIn");
+
+    const mainCont = document.querySelector(".main-content");
+    mainCont.classList.toggle("slideOut");
   }
 
   const addProjectsBtn = document.getElementById("addProjects");
@@ -56,5 +59,21 @@ export default function events() {
     const projectsDiv = document.querySelector(".projects");
     const newProjDiv = document.querySelector(".new-project");
     projectsDiv.insertBefore(projectDisplayBtn, newProjDiv);
+    projectDisplayBtn.addEventListener("click", showProjectTasks);
+  }
+
+  function showProjectTasks(e) {
+    const mainContentHeader = document.createElement("h3");
+    mainContentHeader.textContent = `${e.target.textContent}`;
+
+    const mainContent = document.querySelector(".main-content");
+    removeContent(mainContent);
+    mainContent.appendChild(mainContentHeader);
+  }
+
+  function removeContent(parent) {
+    while (parent.firstChild) {
+      parent.removeChild(parent.lastChild);
+    }
   }
 }

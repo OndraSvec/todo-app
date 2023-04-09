@@ -88,6 +88,7 @@ main {
 }
 
 main > .side-bar {
+  position: fixed;
   width: var(--side-bar);
   height: 100%;
   padding-inline: var(--padding-header);
@@ -335,4 +336,12 @@ main
   > #project-add-cancel-btn:focus {
   font-weight: 700;
   cursor: pointer;
+}
+
+main > .main-content {
+  transition: translate 0.2s ease-in;
+}
+
+main > .main-content.slideOut {
+  translate: var(--side-bar);
 }
