@@ -35,6 +35,6 @@ firstProject.addTasks(firstTask.getInfo());
 firstProject.addTasks(secondTask.getInfo());
 firstProject.getTasks();
 
-createProjects.addProjects(firstProject.getTasks());
+createProjects.addProjects(firstProject.getInfo());
 
 export default createProjects;

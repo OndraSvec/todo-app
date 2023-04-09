@@ -12,5 +12,12 @@ export default function createProject(name) {
     tasks.push(task);
   }
 
-  return { getProjectName, setProjectName, getTasks, addTasks };
+  const projectInfo = {
+    Name: getProjectName(),
+    Tasks: getTasks(),
+  };
+
+  const getInfo = () => projectInfo;
+
+  return { getProjectName, setProjectName, getTasks, addTasks, getInfo };
 }
