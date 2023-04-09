@@ -29,6 +29,12 @@
   --item-add-color-dark: #16a34a;
   --item-cancel-color: #f43f5e;
   --item-cancel-color-dark: #e11d48;
+  --edit-project-color: #fcd34d;
+  --edit-project-color-dark: #fbbf24;
+  --expand-project-color-dark: #0284c7;
+  --project-div-w: clamp(10rem, 10rem + 20vw, 25rem);
+  --project-header-h: calc(var(--header-height) * 0.8);
+  --project-header-bord: clamp(1px, 1px + 2vw, 6px);
 }
 
 html {
@@ -344,8 +350,139 @@ main > .main-content {
   flex-direction: column;
   align-items: center;
   transition: translate 0.2s ease-in;
+  color: var(--main-blue);
+  padding: calc(var(--padding-header) * 2);
 }
 
 main > .main-content.slideOut {
   translate: var(--side-bar);
+}
+
+main > .main-content > .main-content-project {
+  width: var(--project-div-w);
+}
+
+main > .main-content > .main-content-project > .main-content-project-header {
+  display: grid;
+  grid-template-columns: 1fr repeat(4, auto);
+  align-items: center;
+  gap: calc(var(--project-header-h) * 0.1);
+  height: var(--project-header-h);
+  padding: calc(var(--project-header-h) * 0.1);
+  border: var(--project-header-bord) solid var(--main-blue);
+}
+
+main
+  > .main-content
+  > .main-content-project
+  > .main-content-project-header
+  > h3 {
+  font-size: var(--sidebar-fs-main);
+}
+
+main
+  > .main-content
+  > .main-content-project
+  > .main-content-project-header
+  > .mc-proj-head-btns {
+  background-color: transparent;
+  display: grid;
+}
+
+main
+  > .main-content
+  > .main-content-project
+  > .main-content-project-header
+  > .mc-proj-head-btns:hover {
+  cursor: pointer;
+}
+
+main
+  > .main-content
+  > .main-content-project
+  > .main-content-project-header
+  > .mc-proj-head-btns
+  > svg {
+  width: calc(var(--nav-menu) * 0.6);
+  height: auto;
+}
+
+main
+  > .main-content
+  > .main-content-project
+  > .main-content-project-header
+  > .mc-proj-head-btns:first-of-type
+  > svg {
+  fill: var(--main-blue);
+}
+
+main
+  > .main-content
+  > .main-content-project
+  > .main-content-project-header
+  > .mc-proj-head-btns:nth-of-type(2)
+  > svg {
+  fill: var(--item-add-color);
+}
+
+main
+  > .main-content
+  > .main-content-project
+  > .main-content-project-header
+  > .mc-proj-head-btns:nth-of-type(3)
+  > svg {
+  fill: var(--edit-project-color);
+}
+
+main
+  > .main-content
+  > .main-content-project
+  > .main-content-project-header
+  > .mc-proj-head-btns:last-of-type
+  > svg {
+  fill: var(--item-cancel-color);
+}
+
+main
+  > .main-content
+  > .main-content-project
+  > .main-content-project-header
+  > .mc-proj-head-btns:first-of-type:hover
+  > svg {
+  fill: var(--expand-project-color-dark);
+}
+
+main
+  > .main-content
+  > .main-content-project
+  > .main-content-project-header
+  > .mc-proj-head-btns:nth-of-type(2):hover
+  > svg {
+  fill: var(--item-add-color-dark);
+}
+
+main
+  > .main-content
+  > .main-content-project
+  > .main-content-project-header
+  > .mc-proj-head-btns:nth-of-type(3):hover
+  > svg {
+  fill: var(--edit-project-color-dark);
+}
+
+main
+  > .main-content
+  > .main-content-project
+  > .main-content-project-header
+  > .mc-proj-head-btns:last-of-type:hover
+  > svg {
+  fill: var(--item-cancel-color-dark);
+}
+
+main > .main-content > .main-content-project > .mc-project-task-div {
+  display: none;
+}
+
+main > .main-content > .main-content-project > .mc-project-task-div.expanded {
+  display: block;
 }
