@@ -239,7 +239,8 @@ main
   translate: 0% 0%;
 }
 
-main > .side-bar > .projects > .new-project > .np-form > .np-form-buttons {
+main > .side-bar > .projects > .new-project > .np-form > .np-form-buttons,
+main > form > .addTask-form-buttons {
   height: calc(var(--sidebar-form-input-height) * 0.75);
   display: flex;
   gap: calc(var(--sidebar-gap) * 0.5);
@@ -252,7 +253,7 @@ main
   > .np-form
   > .np-form-buttons
   > button {
-  flex-grow: 1;
+  flex: 1;
   color: white;
   font-size: calc(var(--sidebar-fs-main) * 0.75);
   border-radius: var(--sidebar-brd-rad);
@@ -264,7 +265,8 @@ main
   > .new-project
   > .np-form
   > .np-form-buttons
-  > #project-add-btn {
+  > #project-add-btn,
+main > form > .addTask-form-buttons > #addTask-submit-btn {
   background-color: var(--item-add-color);
 }
 
@@ -275,13 +277,15 @@ main
   > .np-form
   > .np-form-buttons
   > #project-add-btn:hover,
+main > form > .addTask-form-buttons > #addTask-submit-btn:hover,
 main
   > .side-bar
   > .projects
   > .new-project
   > .np-form
   > .np-form-buttons
-  > #project-add-btn:focus {
+  > #project-add-btn:focus,
+main > form > .addTask-form-buttons > #addTask-submit-btn:focus {
   background-color: var(--item-add-color-dark);
 }
 
@@ -291,7 +295,8 @@ main
   > .new-project
   > .np-form
   > .np-form-buttons
-  > #project-add-cancel-btn {
+  > #project-add-cancel-btn,
+main > form > .addTask-form-buttons > #addTask-cancel-btn {
   background-color: var(--item-cancel-color);
 }
 
@@ -302,13 +307,15 @@ main
   > .np-form
   > .np-form-buttons
   > #project-add-cancel-btn:hover,
+main > form > .addTask-form-buttons > #addTask-cancel-btn:hover,
 main
   > .side-bar
   > .projects
   > .new-project
   > .np-form
   > .np-form-buttons
-  > #project-add-cancel-btn:focus {
+  > #project-add-cancel-btn:focus,
+main > form > .addTask-form-buttons > #addTask-cancel-btn:focus {
   background-color: var(--item-cancel-color-dark);
 }
 
@@ -319,6 +326,7 @@ main
   > .np-form
   > .np-form-buttons
   > #project-add-btn:hover,
+main > form > .addTask-form-buttons > #addTask-submit-btn:hover,
 main
   > .side-bar
   > .projects
@@ -326,6 +334,7 @@ main
   > .np-form
   > .np-form-buttons
   > #project-add-btn:focus,
+main > form > .addTask-form-buttons > #addTask-submit-btn:focus,
 main
   > .side-bar
   > .projects
@@ -333,13 +342,15 @@ main
   > .np-form
   > .np-form-buttons
   > #project-add-cancel-btn:hover,
+main > form > .addTask-form-buttons > #addTask-cancel-btn:hover,
 main
   > .side-bar
   > .projects
   > .new-project
   > .np-form
   > .np-form-buttons
-  > #project-add-cancel-btn:focus {
+  > #project-add-cancel-btn:focus,
+main > form > .addTask-form-buttons > #addTask-cancel-btn:focus {
   font-weight: 700;
   cursor: pointer;
 }
@@ -485,4 +496,84 @@ main > .main-content > .main-content-project > .mc-project-task-div {
 
 main > .main-content > .main-content-project > .mc-project-task-div.expanded {
   display: block;
+}
+
+main > form {
+  background-color: white;
+  color: black;
+  padding: var(--padding-header);
+  position: fixed;
+  z-index: 5;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: ;
+  width: ;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--sidebar-gap);
+  border: var(--project-header-bord) solid var(--main-blue);
+}
+
+main > form > p {
+  font-size: var(--sidebar-fs-main);
+  color: var(--main-blue);
+  font-weight: 700;
+}
+
+main > form > .form-input {
+  background-color: white;
+  height: 2rem;
+  width: 100%;
+  position: relative;
+}
+
+main > form > .form-input > input {
+  width: 100%;
+  height: 100%;
+}
+
+main > form > .form-input > label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+main > form > .form-input > label > .label-name,
+main > form > .form-input-date > label > .label-name {
+  font-size: calc(var(--sidebar-fs-main) * 0.8);
+  bottom: 0.4rem;
+}
+main > form > .form-input > label > .label-name {
+  position: absolute;
+}
+
+main > form > .form-input > input:focus + label > .label-name,
+main > form > .form-input > input:valid + label > .label-name {
+  scale: 0;
+}
+
+main > form > .form-input-date {
+  display: flex;
+  flex-direction: column;
+}
+
+main > form > .form-input-date > input {
+  font-size: calc(var(--sidebar-fs-main) * 0.8);
+}
+
+main > form > .addTask-form-buttons {
+  width: 100%;
+}
+
+main > form > .addTask-form-buttons > button {
+  flex: 1;
+  color: white;
+  font-size: calc(var(--sidebar-fs-main) * 0.75);
+  border-radius: var(--sidebar-brd-rad);
 }

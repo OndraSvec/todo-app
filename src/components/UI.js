@@ -16,21 +16,21 @@ export default function events() {
   const addProjectsBtn = document.getElementById("addProjects");
   addProjectsBtn.addEventListener("click", showAddProjectForm);
 
-  function handleProjectForm(display1, display2) {
-    const projectForm = document.querySelector(".np-form");
+  function handleProjectForm(target, display1, display2) {
+    const projectForm = document.querySelector(target);
     projectForm.setAttribute("style", `display: ${display1};`);
     addProjectsBtn.setAttribute("style", `display: ${display2};`);
   }
 
   function showAddProjectForm() {
-    handleProjectForm("block", "none");
+    handleProjectForm(".np-form", "block", "none");
   }
 
   const addProjCancBtn = document.getElementById("project-add-cancel-btn");
   addProjCancBtn.addEventListener("click", hideAddProjectForm);
 
   function hideAddProjectForm() {
-    handleProjectForm("none", "block");
+    handleProjectForm(".np-form", "none", "block");
   }
 
   const addProjBtn = document.getElementById("project-add-btn");

@@ -81,6 +81,61 @@
         </div>
       </div>
       <div class="main-content"></div>
+      <form action="" method="get">
+        <p>Add new task</p>
+        <div class="form-input">
+          <input
+            type="text"
+            id="title"
+            name="title"
+            value=""
+            autocomplete="off"
+            required
+          />
+          <label for="title"><span class="label-name">Title</span></label>
+        </div>
+        <div class="form-input">
+          <input
+            type="text"
+            id="description"
+            name="description"
+            value=""
+            autocomplete="off"
+            required
+          />
+          <label for="description"
+            ><span class="label-name">Description</span></label
+          >
+        </div>
+        <div class="form-input">
+          <input
+            type="text"
+            id="priority"
+            name="priority"
+            value=""
+            min="1"
+            autocomplete="off"
+            required
+          />
+          <label for="priority"><span class="label-name">Priority</span></label>
+        </div>
+        <div class="form-input-date">
+          <label for="dueDate"><span class="label-name">DueDate:</span></label>
+          <input
+            type="datetime-local"
+            id="dueDate"
+            name="dueDate"
+            value=""
+            min="1"
+            autocomplete="off"
+            required
+          />
+        </div>
+        <div class="addTask-form-buttons">
+          <button type="submit" id="addTask-submit-btn">Add</button>
+          <button type="button" id="addTask-cancel-btn">Cancel</button>
+        </div>
+      </form>
     </main>
   </body>
 </html>
