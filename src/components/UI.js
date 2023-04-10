@@ -1,4 +1,7 @@
-export default function eventsDOM() {
+import createProject from "./projects";
+import { createProjects } from "./todolist";
+
+export default function events() {
   const navMenu = document.getElementById("navMenu");
   navMenu.addEventListener("click", toggleSBMC);
 
@@ -31,13 +34,16 @@ export default function eventsDOM() {
   }
 
   const addProjBtn = document.getElementById("project-add-btn");
-  addProjBtn.addEventListener("click", addProjectDOM);
+  addProjBtn.addEventListener("click", addProject);
 
-  function addProjectDOM() {
+  function addProject() {
     const addProjInput = document.getElementById("np-input");
     if (addProjInput.checkValidity()) {
       hideAddProjectForm();
       displayProjectSideBar(addProjInput);
+      const newProject = createProject(addProjInput.value);
+      createProjects.addProjects(newProject.getInfo());
+      console.log(createProjects.getProjects());
       removeInputVal(addProjInput);
     }
   }
@@ -118,6 +124,11 @@ export default function eventsDOM() {
     }
 
     addProjectHandleBtnEvent("mc-proj-head-expand", expandTaskList);
+    addProjectHandleBtnEvent("mc-proj-head-add", addTask);
+    /*
+    addProjectHandleBtnEvent("mc-proj-head-edit", editProjDOM);
+    addProjectHandleBtnEvent("mc-proj-head-remove", removeProjDOM);
+    */
   }
 
   function removeContent(parent) {
@@ -127,8 +138,15 @@ export default function eventsDOM() {
   }
 
   function expandTaskList() {
-    console.log("hello");
     const taskDiv = document.querySelector(".mc-project-task-div");
     taskDiv.classList.toggle("expanded");
+  }
+
+  function addTask() {
+    const expandedDiv = document.querySelector(".mc-project-task-div");
+    const newTaskDiv = document.createElement("div");
+    newTaskDiv.textContent = "Added task";
+    expandedDiv.appendChild(newTaskDiv);
+    expandedDiv.classList.add("expanded");
   }
 }

@@ -1,5 +1,3 @@
-import { eventsData } from "./components/todolist";
-import eventsDOM from "./components/UI";
+import events from "./components/UI";
 
-eventsData();
-eventsDOM();
+events();
