@@ -577,3 +577,12 @@ main > form > .addTask-form-buttons > button {
   font-size: calc(var(--sidebar-fs-main) * 0.75);
   border-radius: var(--sidebar-brd-rad);
 }
+
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.25);
+}
