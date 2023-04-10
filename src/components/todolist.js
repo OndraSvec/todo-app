@@ -15,26 +15,18 @@ const createProjects = (() => {
   };
 })();
 
-const firstTask = createTask(
-  "Call Mike",
-  "Ask him about that thing.",
-  "Today",
-  "High"
-);
+function eventsData() {
+  const addProjBtn = document.getElementById("project-add-btn");
+  addProjBtn.addEventListener("click", addProjectData);
 
-const secondTask = createTask(
-  "Call Mom",
-  "Ask her how she is doing",
-  "Now",
-  "High"
-);
+  function addProjectData() {
+    const addProjInput = document.getElementById("np-input");
+    if (addProjInput.checkValidity()) {
+      const newProject = createProject(addProjInput.value);
+      createProjects.addProjects(newProject.getInfo());
+      console.log(createProjects.getProjects());
+    }
+  }
+}
 
-const firstProject = createProject("Call");
-
-firstProject.addTasks(firstTask.getInfo());
-firstProject.addTasks(secondTask.getInfo());
-firstProject.getTasks();
-
-createProjects.addProjects(firstProject.getInfo());
-
-export default createProjects;
+export { createProjects, eventsData };

@@ -1,7 +1,4 @@
-import createProject from "./projects";
-import createProjects from "./todolist";
-
-export default function events() {
+export default function eventsDOM() {
   const navMenu = document.getElementById("navMenu");
   navMenu.addEventListener("click", toggleSBMC);
 
@@ -34,16 +31,14 @@ export default function events() {
   }
 
   const addProjBtn = document.getElementById("project-add-btn");
-  addProjBtn.addEventListener("click", addProject);
+  addProjBtn.addEventListener("click", addProjectDOM);
 
-  function addProject() {
+  function addProjectDOM() {
     const addProjInput = document.getElementById("np-input");
     if (addProjInput.checkValidity()) {
       hideAddProjectForm();
-      const newProject = createProject(addProjInput.value);
-      createProjects.addProjects(newProject.getInfo());
+      displayProjectSideBar(addProjInput);
       removeInputVal(addProjInput);
-      displayProjectSideBar(newProject);
     }
   }
 
@@ -55,7 +50,7 @@ export default function events() {
   function displayProjectSideBar(project) {
     const projectDisplayBtn = document.createElement("btn");
     projectDisplayBtn.classList.add("add-project");
-    projectDisplayBtn.textContent = project.getProjectName();
+    projectDisplayBtn.textContent = project.value;
     const projectsDiv = document.querySelector(".projects");
     const newProjDiv = document.querySelector(".new-project");
     projectsDiv.insertBefore(projectDisplayBtn, newProjDiv);
@@ -121,6 +116,7 @@ export default function events() {
       const targetElement = document.getElementById(target);
       targetElement.addEventListener("click", func);
     }
+
     addProjectHandleBtnEvent("mc-proj-head-expand", expandTaskList);
   }
 
@@ -131,6 +127,7 @@ export default function events() {
   }
 
   function expandTaskList() {
+    console.log("hello");
     const taskDiv = document.querySelector(".mc-project-task-div");
     taskDiv.classList.toggle("expanded");
   }

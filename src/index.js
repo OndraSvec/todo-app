@@ -1,5 +1,5 @@
-import createProjects from "./components/todolist";
-import events from "./components/UI";
+import { eventsData } from "./components/todolist";
+import eventsDOM from "./components/UI";
 
-console.log(createProjects.getProjects());
-events();
+eventsData();
+eventsDOM();
