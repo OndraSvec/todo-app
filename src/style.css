@@ -507,14 +507,18 @@ main > form {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  height: ;
-  width: ;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   gap: var(--sidebar-gap);
   border: var(--project-header-bord) solid var(--main-blue);
+  scale: 0;
+  transition: scale 0.2s ease-in;
+}
+
+main > form.active {
+  scale: 1;
 }
 
 main > form > p {
@@ -584,5 +588,7 @@ main > form > .addTask-form-buttons > button {
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: rgba(0, 0, 0, 0.25);
+  background-color: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(0.25rem);
+  -webkit-backdrop-filter: blur(0.25rem);
 }

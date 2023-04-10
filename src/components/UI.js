@@ -143,10 +143,16 @@ export default function events() {
   }
 
   function addTask() {
+    const form = document.querySelector("form");
+    form.classList.toggle("active");
+    const overlay = document.getElementById("overlay");
+    overlay.classList.toggle("overlay");
+    /*
     const expandedDiv = document.querySelector(".mc-project-task-div");
     const newTaskDiv = document.createElement("div");
     newTaskDiv.textContent = "Added task";
     expandedDiv.appendChild(newTaskDiv);
     expandedDiv.classList.add("expanded");
+    */
   }
 }
