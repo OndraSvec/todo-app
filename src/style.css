@@ -46,7 +46,7 @@ html {
 body {
   flex-grow: 1;
   font-family: "Roboto Mono", monospace;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 header {
