@@ -1,3 +1,4 @@
+import createTask from "./tasks";
 import createProject from "./projects";
 import { createProjects } from "./todolist";
 
@@ -51,6 +52,11 @@ export default function events() {
   function removeInputVal(node) {
     const targetNode = node;
     targetNode.value = "";
+  }
+
+  function addProjectHandleBtnEvent(target, func) {
+    const targetElement = document.getElementById(target);
+    targetElement.addEventListener("click", func);
   }
 
   function displayProjectSideBar(project) {
@@ -118,13 +124,8 @@ export default function events() {
     removeContent(mainContent);
     mainContent.appendChild(projectDiv);
 
-    function addProjectHandleBtnEvent(target, func) {
-      const targetElement = document.getElementById(target);
-      targetElement.addEventListener("click", func);
-    }
-
     addProjectHandleBtnEvent("mc-proj-head-expand", expandTaskList);
-    addProjectHandleBtnEvent("mc-proj-head-add", addTask);
+    addProjectHandleBtnEvent("mc-proj-head-add", showAddTaskForm);
     /*
     addProjectHandleBtnEvent("mc-proj-head-edit", editProjDOM);
     addProjectHandleBtnEvent("mc-proj-head-remove", removeProjDOM);
@@ -142,17 +143,80 @@ export default function events() {
     taskDiv.classList.toggle("expanded");
   }
 
-  function addTask() {
+  function showAddTaskForm() {
     const form = document.querySelector("form");
-    form.classList.toggle("active");
+    form.classList.add("active");
+    showOverlay();
+
+    form.addEventListener("submit", addTask);
+  }
+
+  function hideAddTaskForm() {
+    const form = document.querySelector("form");
+    form.classList.remove("active");
+  }
+
+  function showOverlay() {
     const overlay = document.getElementById("overlay");
-    overlay.classList.toggle("overlay");
-    /*
+    overlay.classList.add("overlay");
+  }
+
+  function hideOverlay() {
+    const overlay = document.getElementById("overlay");
+    overlay.classList.remove("overlay");
+  }
+
+  function addTask(e) {
+    e.preventDefault();
     const expandedDiv = document.querySelector(".mc-project-task-div");
     const newTaskDiv = document.createElement("div");
-    newTaskDiv.textContent = "Added task";
+    newTaskDiv.classList.add("new-task");
+    const newTaskDivHead = document.createElement("div");
+    newTaskDivHead.classList.add("new-task-head");
+    const newTaskDivHeadTitle = document.createElement("btn");
+    const newTaskDivHeadExp = document.createElement("btn");
+    const newTaskDivHeadRemove = document.createElement("btn");
+    const newTaskDivExp = document.createElement("div");
+    newTaskDivExp.classList.add("new-task-body");
+    const formInputTitle = document.getElementById("title");
+    const formInputDescription = document.getElementById("description");
+    const formInputPriority = document.getElementById("priority");
+    const formInputDueDate = document.getElementById("dueDate");
+
+    const newTask = createTask(
+      formInputTitle.value,
+      formInputDescription.value,
+      formInputDueDate.value,
+      formInputPriority.value
+    );
+
+    const projectToAddTaskDOM =
+      document.getElementById("mc-proj-head-h3").textContent;
+    const projectToAddTaskData = createProjects
+      .getProjects()
+      .find((element) => element.Name === projectToAddTaskDOM);
+
+    projectToAddTaskData.Tasks.push(newTask.getInfo());
+    console.log(createProjects.getProjects());
+
+    newTaskDivHeadTitle.textContent = formInputTitle.value;
+
+    [newTaskDivHeadTitle, newTaskDivHeadExp, newTaskDivHeadRemove].forEach(
+      (element) => newTaskDivHead.appendChild(element)
+    );
+
+    [newTaskDivHead, newTaskDivExp].forEach((element) =>
+      newTaskDiv.appendChild(element)
+    );
     expandedDiv.appendChild(newTaskDiv);
     expandedDiv.classList.add("expanded");
-    */
+    [
+      formInputTitle,
+      formInputDescription,
+      formInputPriority,
+      formInputDueDate,
+    ].forEach((element) => removeInputVal(element));
+    hideAddTaskForm();
+    hideOverlay();
   }
 }
