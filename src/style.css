@@ -404,7 +404,14 @@ main
   > .main-content
   > .main-content-project
   > .main-content-project-header
-  > .mc-proj-head-btns:hover {
+  > .mc-proj-head-btns:hover,
+main
+  > .main-content
+  > .main-content-project
+  > .mc-project-task-div.expanded
+  > .new-task
+  > .new-task-head
+  > .new-task-head-btn:hover {
   cursor: pointer;
 }
 
@@ -423,6 +430,14 @@ main
   > .main-content-project
   > .main-content-project-header
   > .mc-proj-head-btns:first-of-type
+  > svg,
+main
+  > .main-content
+  > .main-content-project
+  > .mc-project-task-div.expanded
+  > .new-task
+  > .new-task-head
+  > #nt-head-expand
   > svg {
   fill: var(--main-blue);
 }
@@ -450,6 +465,14 @@ main
   > .main-content-project
   > .main-content-project-header
   > .mc-proj-head-btns:last-of-type
+  > svg,
+main
+  > .main-content
+  > .main-content-project
+  > .mc-project-task-div.expanded
+  > .new-task
+  > .new-task-head
+  > #nt-head-remove
   > svg {
   fill: var(--item-cancel-color);
 }
@@ -459,6 +482,14 @@ main
   > .main-content-project
   > .main-content-project-header
   > .mc-proj-head-btns:first-of-type:hover
+  > svg,
+main
+  > .main-content
+  > .main-content-project
+  > .mc-project-task-div.expanded
+  > .new-task
+  > .new-task-head
+  > #nt-head-expand:hover
   > svg {
   fill: var(--expand-project-color-dark);
 }
@@ -486,6 +517,14 @@ main
   > .main-content-project
   > .main-content-project-header
   > .mc-proj-head-btns:last-of-type:hover
+  > svg,
+main
+  > .main-content
+  > .main-content-project
+  > .mc-project-task-div.expanded
+  > .new-task
+  > .new-task-head
+  > #nt-head-remove:hover
   > svg {
   fill: var(--item-cancel-color-dark);
 }
@@ -496,6 +535,28 @@ main > .main-content > .main-content-project > .mc-project-task-div {
 
 main > .main-content > .main-content-project > .mc-project-task-div.expanded {
   display: block;
+}
+
+main
+  > .main-content
+  > .main-content-project
+  > .mc-project-task-div.expanded
+  > .new-task
+  > .new-task-head {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr repeat(2, auto);
+}
+
+main
+  > .main-content
+  > .main-content-project
+  > .mc-project-task-div.expanded
+  > .new-task
+  > .new-task-head
+  svg {
+  width: calc(var(--nav-menu) * 0.5);
+  height: auto;
 }
 
 main > form {
