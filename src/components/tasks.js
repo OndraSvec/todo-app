@@ -45,10 +45,10 @@ export default function createTask(title, description, dueDate, priority) {
   };
 }
 
-export function renderTasks(e) {
+export function renderTasks(e, nodeName) {
   const projectsArray = createProjects.getProjects();
   const projectToRender = projectsArray.find(
-    (element) => element.Name === e.target.textContent
+    (element) => element.Name === nodeName
   );
   const tasksToRender = projectToRender.Tasks;
   const expandedDiv = document.querySelector(".mc-project-task-div");
