@@ -562,12 +562,18 @@ main > form > .form-input > input:valid + label > .label-name {
   scale: 0;
 }
 
-main > form > .form-input-date {
+main > form > .form-input-flex {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
-main > form > .form-input-date > input {
+main > form > .form-input-flex > select {
+  width: 40%;
+}
+
+main > form > .form-input-flex > input,
+main > form > .form-input-flex > select {
   font-size: calc(var(--sidebar-fs-main) * 0.8);
 }
 
