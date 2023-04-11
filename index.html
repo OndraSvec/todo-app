@@ -82,7 +82,7 @@
       </div>
       <div class="main-content"></div>
       <form action="" method="get">
-        <p>Add new task</p>
+        <p>Task</p>
         <div class="form-input">
           <input
             type="text"
@@ -107,26 +107,21 @@
             ><span class="label-name">Description</span></label
           >
         </div>
-        <div class="form-input">
-          <input
-            type="text"
-            id="priority"
-            name="priority"
-            value=""
-            min="1"
-            autocomplete="off"
-            required
-          />
+        <div class="form-input-flex">
           <label for="priority"><span class="label-name">Priority</span></label>
+          <select id="priority" name="priority" required>
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+          </select>
         </div>
-        <div class="form-input-date">
+        <div class="form-input-flex">
           <label for="dueDate"><span class="label-name">DueDate:</span></label>
           <input
             type="datetime-local"
             id="dueDate"
             name="dueDate"
             value=""
-            min="1"
             autocomplete="off"
             required
           />
