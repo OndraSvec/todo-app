@@ -153,6 +153,8 @@ export default function events() {
     showOverlay();
 
     form.addEventListener("submit", addTask);
+    const cancelBtn = document.getElementById("addTask-cancel-btn");
+    cancelBtn.addEventListener("click", cancelTaskForm);
   }
 
   function hideAddTaskForm() {
@@ -195,6 +197,21 @@ export default function events() {
     removeContent(expandedDiv);
     renderTasks(e, projectToAddTaskDOM);
 
+    [
+      formInputTitle,
+      formInputDescription,
+      formInputPriority,
+      formInputDueDate,
+    ].forEach((element) => removeInputVal(element));
+    hideAddTaskForm();
+    hideOverlay();
+  }
+
+  function cancelTaskForm() {
+    const formInputTitle = document.getElementById("title");
+    const formInputDescription = document.getElementById("description");
+    const formInputPriority = document.getElementById("priority");
+    const formInputDueDate = document.getElementById("dueDate");
     [
       formInputTitle,
       formInputDescription,

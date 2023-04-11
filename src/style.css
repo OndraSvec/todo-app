@@ -548,6 +548,7 @@ main
   display: grid;
   align-items: center;
   grid-template-columns: 1fr repeat(2, auto);
+  padding: calc(var(--project-header-h) * 0.1);
 }
 
 main
@@ -559,6 +560,17 @@ main
   svg {
   width: calc(var(--nav-menu) * 0.5);
   height: auto;
+  display: grid;
+}
+
+main
+  > .main-content
+  > .main-content-project
+  > .mc-project-task-div.expanded
+  > .new-task
+  > .new-task-head
+  > p {
+  font-size: calc(var(--sidebar-fs-main) * 0.75);
 }
 
 main > form {
