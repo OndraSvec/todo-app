@@ -129,8 +129,8 @@ export default function events() {
     addProjectHandleBtnEvent("mc-proj-head-expand", expandTaskList);
     addProjectHandleBtnEvent("mc-proj-head-add", showAddTaskForm);
     /*
-    addProjectHandleBtnEvent("mc-proj-head-edit", editProjDOM);
-    addProjectHandleBtnEvent("mc-proj-head-remove", removeProjDOM);
+    addProjectHandleBtnEvent("mc-proj-head-edit", editProj);
+    addProjectHandleBtnEvent("mc-proj-head-remove", removeProj;
     */
   }
 
@@ -142,7 +142,9 @@ export default function events() {
 
   function expandTaskList() {
     const taskDiv = document.querySelector(".mc-project-task-div");
-    taskDiv.classList.toggle("expanded");
+    if (taskDiv.childNodes.length > 0) {
+      taskDiv.classList.toggle("expanded");
+    }
   }
 
   function showAddTaskForm() {

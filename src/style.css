@@ -535,6 +535,8 @@ main > .main-content > .main-content-project > .mc-project-task-div {
 
 main > .main-content > .main-content-project > .mc-project-task-div.expanded {
   display: block;
+  border: var(--project-header-bord) solid var(--main-blue);
+  border-top: none;
 }
 
 main
