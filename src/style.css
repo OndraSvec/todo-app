@@ -573,6 +573,16 @@ main
   font-size: calc(var(--sidebar-fs-main) * 0.75);
 }
 
+main
+  > .main-content
+  > .main-content-project
+  > .mc-project-task-div.expanded
+  > .new-task
+  > .new-task-head
+  > button {
+  background-color: transparent;
+}
+
 main > form {
   background-color: white;
   color: black;

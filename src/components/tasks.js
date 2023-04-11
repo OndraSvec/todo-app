@@ -60,8 +60,8 @@ export function renderTasks(e, nodeName) {
       const newTaskDivHead = document.createElement("div");
       newTaskDivHead.classList.add("new-task-head");
       const newTaskDivHeadTitle = document.createElement("p");
-      const newTaskDivHeadExp = document.createElement("btn");
-      const newTaskDivHeadRemove = document.createElement("btn");
+      const newTaskDivHeadExp = document.createElement("button");
+      const newTaskDivHeadRemove = document.createElement("button");
       const newTaskDivExp = document.createElement("div");
       newTaskDivExp.classList.add("new-task-body");
 
