@@ -583,6 +583,39 @@ main
   background-color: transparent;
 }
 
+main
+  > .main-content
+  > .main-content-project
+  > .mc-project-task-div.expanded
+  > .new-task
+  > .new-task-body {
+  display: none;
+  gap: calc(var(--project-header-h) * 0.05);
+  color: black;
+  font-size: calc(var(--sidebar-fs-main) * 0.7);
+  padding: calc(var(--project-header-h) * 0.1);
+}
+
+main
+  > .main-content
+  > .main-content-project
+  > .mc-project-task-div.expanded
+  > .new-task
+  > .new-task-body.expanded {
+  display: flex;
+  flex-direction: column;
+}
+
+main
+  > .main-content
+  > .main-content-project
+  > .mc-project-task-div.expanded
+  > .new-task
+  > .new-task-body.expanded
+  > p:first-of-type {
+  text-align: justify;
+}
+
 main > form {
   background-color: white;
   color: black;
