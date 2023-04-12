@@ -77,18 +77,21 @@ export default function events() {
 
     const mainContentProjRemove = document.createElement("button");
     mainContentProjRemove.innerHTML =
-      '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Remove</title><path d="M3,16.74L7.76,12L3,7.26L7.26,3L12,7.76L16.74,3L21,7.26L16.24,12L21,16.74L16.74,21L12,16.24L7.26,21L3,16.74M12,13.41L16.74,18.16L18.16,16.74L13.41,12L18.16,7.26L16.74,5.84L12,10.59L7.26,5.84L5.84,7.26L10.59,12L5.84,16.74L7.26,18.16L12,13.41Z" /></svg>';
+      '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3,16.74L7.76,12L3,7.26L7.26,3L12,7.76L16.74,3L21,7.26L16.24,12L21,16.74L16.74,21L12,16.24L7.26,21L3,16.74M12,13.41L16.74,18.16L18.16,16.74L13.41,12L18.16,7.26L16.74,5.84L12,10.59L7.26,5.84L5.84,7.26L10.59,12L5.84,16.74L7.26,18.16L12,13.41Z" /></svg>';
     mainContentProjRemove.setAttribute("id", "mc-proj-head-remove");
+    mainContentProjRemove.setAttribute("title", "Remove");
 
     const mainContentProjAddTask = document.createElement("button");
     mainContentProjAddTask.innerHTML =
-      '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Add task</title><path d="M4,9H9V4H15V9H20V15H15V20H9V15H4V9M11,13V18H13V13H18V11H13V6H11V11H6V13H11Z" /></svg>';
+      '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4,9H9V4H15V9H20V15H15V20H9V15H4V9M11,13V18H13V13H18V11H13V6H11V11H6V13H11Z" /></svg>';
     mainContentProjAddTask.setAttribute("id", "mc-proj-head-add");
+    mainContentProjAddTask.setAttribute("title", "Add task");
 
     const mainContentProjExpand = document.createElement("button");
     mainContentProjExpand.innerHTML =
-      '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Expand</title><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg>';
+      '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z" /></svg>';
     mainContentProjExpand.setAttribute("id", "mc-proj-head-expand");
+    mainContentProjExpand.setAttribute("title", "Expand");
 
     [
       mainContentProjRemove,
@@ -118,6 +121,15 @@ export default function events() {
     removeContent(mainContent);
     mainContent.appendChild(projectDiv);
     renderTasks(e, e.target.textContent);
+    if (mainContentTaskDiv.classList.contains("expanded")) {
+      document
+        .getElementById("mc-proj-head-expand")
+        .firstChild.setAttribute("style", "transform: rotate(180deg);");
+    } else {
+      document
+        .getElementById("mc-proj-head-expand")
+        .firstChild.setAttribute("style", "transform: rotate(0deg);");
+    }
 
     addProjectHandleBtnEvent("mc-proj-head-expand", expandTaskList);
     addProjectHandleBtnEvent("mc-proj-head-add", showAddTaskForm);
@@ -130,6 +142,15 @@ export default function events() {
     const taskDiv = document.querySelector(".mc-project-task-div");
     if (taskDiv.childNodes.length > 0) {
       taskDiv.classList.toggle("expanded");
+      if (taskDiv.classList.contains("expanded")) {
+        document
+          .getElementById("mc-proj-head-expand")
+          .firstChild.setAttribute("style", "transform: rotate(180deg);");
+      } else {
+        document
+          .getElementById("mc-proj-head-expand")
+          .firstChild.setAttribute("style", "transform: rotate(0deg);");
+      }
     }
   }
 
@@ -191,6 +212,9 @@ export default function events() {
     ].forEach((element) => removeInputVal(element));
     hideAddTaskForm();
     hideOverlay();
+    document
+      .getElementById("mc-proj-head-expand")
+      .firstChild.setAttribute("style", "transform: rotate(180deg);");
   }
 
   function cancelTaskForm() {
