@@ -1,5 +1,5 @@
 import createTask from "./tasks";
-import { renderTasks } from "./renderingFunctions";
+import { renderTasks, removeContent } from "./renderingFunctions";
 import createProject from "./projects";
 import { createProjects } from "./todolist";
 
@@ -132,12 +132,6 @@ export default function events() {
     addProjectHandleBtnEvent("mc-proj-head-edit", editProj);
     addProjectHandleBtnEvent("mc-proj-head-remove", removeProj;
     */
-  }
-
-  function removeContent(parent) {
-    while (parent.firstChild) {
-      parent.removeChild(parent.lastChild);
-    }
   }
 
   function expandTaskList() {

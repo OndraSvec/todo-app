@@ -683,3 +683,7 @@ main > form > .addTask-form-buttons > button {
   backdrop-filter: blur(0.25rem);
   -webkit-backdrop-filter: blur(0.25rem);
 }
+
+svg {
+  pointer-events: none;
+}
