@@ -29,8 +29,6 @@
   --item-add-color-dark: #16a34a;
   --item-cancel-color: #f43f5e;
   --item-cancel-color-dark: #e11d48;
-  --edit-project-color: #fcd34d;
-  --edit-project-color-dark: #fbbf24;
   --expand-project-color-dark: #0284c7;
   --project-div-w: clamp(10rem, 10rem + 20vw, 25rem);
   --project-header-h: calc(var(--header-height) * 0.8);
@@ -375,7 +373,7 @@ main > .main-content > .main-content-project {
 
 main > .main-content > .main-content-project > .main-content-project-header {
   display: grid;
-  grid-template-columns: 1fr repeat(4, auto);
+  grid-template-columns: 1fr repeat(3, auto);
   align-items: center;
   gap: calc(var(--project-header-h) * 0.1);
   height: var(--project-header-h);
@@ -455,15 +453,6 @@ main
   > .main-content
   > .main-content-project
   > .main-content-project-header
-  > .mc-proj-head-btns:nth-of-type(3)
-  > svg {
-  fill: var(--edit-project-color);
-}
-
-main
-  > .main-content
-  > .main-content-project
-  > .main-content-project-header
   > .mc-proj-head-btns:last-of-type
   > svg,
 main
@@ -501,15 +490,6 @@ main
   > .mc-proj-head-btns:nth-of-type(2):hover
   > svg {
   fill: var(--item-add-color-dark);
-}
-
-main
-  > .main-content
-  > .main-content-project
-  > .main-content-project-header
-  > .mc-proj-head-btns:nth-of-type(3):hover
-  > svg {
-  fill: var(--edit-project-color-dark);
 }
 
 main

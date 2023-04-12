@@ -75,11 +75,6 @@ export default function events() {
     mainContentProjHeader.textContent = `${e.target.textContent}`;
     mainContentProjHeader.setAttribute("id", "mc-proj-head-h3");
 
-    const mainContentProjEdit = document.createElement("button");
-    mainContentProjEdit.innerHTML =
-      '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Edit</title><path d="M14.06,9L15,9.94L5.92,19H5V18.08L14.06,9M17.66,3C17.41,3 17.15,3.1 16.96,3.29L15.13,5.12L18.88,8.87L20.71,7.04C21.1,6.65 21.1,6 20.71,5.63L18.37,3.29C18.17,3.09 17.92,3 17.66,3M14.06,6.19L3,17.25V21H6.75L17.81,9.94L14.06,6.19Z" /></svg>';
-    mainContentProjEdit.setAttribute("id", "mc-proj-head-edit");
-
     const mainContentProjRemove = document.createElement("button");
     mainContentProjRemove.innerHTML =
       '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Remove</title><path d="M3,16.74L7.76,12L3,7.26L7.26,3L12,7.76L16.74,3L21,7.26L16.24,12L21,16.74L16.74,21L12,16.24L7.26,21L3,16.74M12,13.41L16.74,18.16L18.16,16.74L13.41,12L18.16,7.26L16.74,5.84L12,10.59L7.26,5.84L5.84,7.26L10.59,12L5.84,16.74L7.26,18.16L12,13.41Z" /></svg>';
@@ -96,7 +91,6 @@ export default function events() {
     mainContentProjExpand.setAttribute("id", "mc-proj-head-expand");
 
     [
-      mainContentProjEdit,
       mainContentProjRemove,
       mainContentProjAddTask,
       mainContentProjExpand,
@@ -108,7 +102,6 @@ export default function events() {
       mainContentProjHeader,
       mainContentProjExpand,
       mainContentProjAddTask,
-      mainContentProjEdit,
       mainContentProjRemove,
     ].forEach((element) => mainContentHeadDiv.appendChild(element));
 
@@ -129,7 +122,6 @@ export default function events() {
     addProjectHandleBtnEvent("mc-proj-head-expand", expandTaskList);
     addProjectHandleBtnEvent("mc-proj-head-add", showAddTaskForm);
     /*
-    addProjectHandleBtnEvent("mc-proj-head-edit", editProj);
     addProjectHandleBtnEvent("mc-proj-head-remove", removeProj;
     */
   }
