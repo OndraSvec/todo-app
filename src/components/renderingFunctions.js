@@ -86,6 +86,9 @@ function removeTask(e) {
   renderTasks(e, projectToRemoveFrom);
   if (!findProj().Tasks.length) {
     expandedDiv.classList.remove("expanded");
+    document
+      .getElementById("mc-proj-head-expand")
+      .firstChild.setAttribute("style", "transform: rotate(0deg);");
   }
 }
 
