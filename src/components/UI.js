@@ -1,5 +1,9 @@
 import createTask from "./tasks";
-import { renderTasks, removeContent } from "./renderingFunctions";
+import {
+  renderTasks,
+  removeContent,
+  findProjIndex,
+} from "./renderingFunctions";
 import createProject from "./projects";
 import { createProjects } from "./todolist";
 
@@ -42,7 +46,7 @@ export default function events() {
     const addProjInput = document.getElementById("np-input");
     if (addProjInput.checkValidity()) {
       hideAddProjectForm();
-      displayProjectSideBar(addProjInput);
+      displayProjectSideBar(addProjInput.value);
       const newProject = createProject(addProjInput.value);
       createProjects.addProjects(newProject.getInfo());
       console.log(createProjects.getProjects());
@@ -63,7 +67,7 @@ export default function events() {
   function displayProjectSideBar(project) {
     const projectDisplayBtn = document.createElement("button");
     projectDisplayBtn.classList.add("add-project");
-    projectDisplayBtn.textContent = project.value;
+    projectDisplayBtn.textContent = project;
     const projectsDiv = document.querySelector(".projects");
     const newProjDiv = document.querySelector(".new-project");
     projectsDiv.insertBefore(projectDisplayBtn, newProjDiv);
@@ -133,9 +137,7 @@ export default function events() {
 
     addProjectHandleBtnEvent("mc-proj-head-expand", expandTaskList);
     addProjectHandleBtnEvent("mc-proj-head-add", showAddTaskForm);
-    /*
-    addProjectHandleBtnEvent("mc-proj-head-remove", removeProj;
-    */
+    addProjectHandleBtnEvent("mc-proj-head-remove", removeProj);
   }
 
   function expandTaskList() {
@@ -230,5 +232,12 @@ export default function events() {
     ].forEach((element) => removeInputVal(element));
     hideAddTaskForm();
     hideOverlay();
+  }
+
+  function removeProj() {
+    const projArr = createProjects.getProjects();
+    const mainContDiv = document.querySelector(".main-content");
+    projArr.splice(findProjIndex(), 1);
+    removeContent(mainContDiv);
   }
 }

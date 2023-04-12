@@ -76,6 +76,15 @@ function findTaskIndex(e) {
   return targetIndex;
 }
 
+export function findProjIndex() {
+  const targetProject = document.getElementById("mc-proj-head-h3").textContent;
+  const projectsArr = createProjects.getProjects();
+  const targetProjectDataIndex = projectsArr.findIndex(
+    (element) => element.Name === targetProject
+  );
+  return targetProjectDataIndex;
+}
+
 function removeTask(e) {
   const expandedDiv = document.querySelector(".mc-project-task-div");
   const projectToRemoveFrom =
