@@ -1,5 +1,5 @@
 import createTask from "./tasks";
-import { renderTasks } from "./tasks";
+import { renderTasks } from "./renderingFunctions";
 import createProject from "./projects";
 import { createProjects } from "./todolist";
 
@@ -61,7 +61,7 @@ export default function events() {
   }
 
   function displayProjectSideBar(project) {
-    const projectDisplayBtn = document.createElement("btn");
+    const projectDisplayBtn = document.createElement("button");
     projectDisplayBtn.classList.add("add-project");
     projectDisplayBtn.textContent = project.value;
     const projectsDiv = document.querySelector(".projects");
