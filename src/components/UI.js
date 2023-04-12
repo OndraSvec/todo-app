@@ -68,10 +68,9 @@ export default function events() {
     const projectDisplayBtn = document.createElement("button");
     projectDisplayBtn.classList.add("add-project");
     projectDisplayBtn.textContent = project;
-    const projectsDiv = document.querySelector(".projects");
-    const newProjDiv = document.querySelector(".new-project");
-    projectsDiv.insertBefore(projectDisplayBtn, newProjDiv);
+    const projectsDiv = document.querySelector(".projects-buttons");
     projectDisplayBtn.addEventListener("click", showProject);
+    projectsDiv.appendChild(projectDisplayBtn);
   }
 
   function showProject(e) {
@@ -237,7 +236,11 @@ export default function events() {
   function removeProj() {
     const projArr = createProjects.getProjects();
     const mainContDiv = document.querySelector(".main-content");
+    const projSideDiv = document.querySelector(".projects-buttons");
+
     projArr.splice(findProjIndex(), 1);
     removeContent(mainContDiv);
+    removeContent(projSideDiv);
+    projArr.forEach((element) => displayProjectSideBar(element.Name));
   }
 }
