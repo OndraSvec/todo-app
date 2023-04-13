@@ -177,8 +177,10 @@ export function renderToday() {
         );
         todayDiv.appendChild(todayTaskDiv);
       });
+  } else {
+    todayDiv.setAttribute("style", "text-align: center;");
+    todayDiv.textContent = "No tasks today.";
   }
-
   mainCont.appendChild(todayDiv);
 }
 
@@ -232,6 +234,9 @@ export function renderWeek() {
         );
         todayDiv.appendChild(todayTaskDiv);
       });
+  } else {
+    todayDiv.setAttribute("style", "text-align: center;");
+    todayDiv.textContent = "No tasks over the next seven days.";
   }
   mainCont.appendChild(todayDiv);
 }
