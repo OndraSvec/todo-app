@@ -15,6 +15,7 @@ export default function events() {
   navMenu.addEventListener("click", toggleSBMC);
 
   function toggleSBMC() {
+    navMenu.classList.toggle("animated");
     const sideBar = document.querySelector(".side-bar");
     sideBar.classList.toggle("slideIn");
 

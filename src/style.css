@@ -12,6 +12,7 @@
   --padding-header: clamp(0.5rem, 0.5rem + 3vw, 1.5rem);
   --header-height: clamp(2.5rem, 2.5rem + 3vw, 4.5rem);
   --nav-menu: calc(var(--padding-header) * 1.5);
+  --nav-menu-translate: calc(var(--nav-menu) * 0.325);
   --header-h1: calc(var(--padding-header) * 2);
   --side-bar: clamp(10rem, 10rem + 8vw, 17.5rem);
   --side-bar-calendar-height: clamp(3.5rem, 3.5rem + 5vw, 6rem);
@@ -61,18 +62,41 @@ header {
   color: white;
 }
 
-header > button:has(.nav-menu) {
+header > #navMenu {
   background-color: transparent;
-}
-
-header > button > .nav-menu {
   width: var(--nav-menu);
-  height: auto;
-  fill: white;
+  height: var(--nav-menu);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: calc(var(--nav-menu) * 0.2);
 }
 
-header > button > .nav-menu:hover {
+header > #navMenu:hover {
   cursor: pointer;
+}
+
+header > #navMenu > .nav-menu {
+  height: calc(var(--nav-menu) * 0.125);
+  background-color: white;
+}
+
+header > #navMenu > div {
+  transition: transform 0.25s;
+}
+
+header > #navMenu.animated > div {
+  transition: transform 0.25s;
+}
+
+header > #navMenu.animated > div:first-child {
+  transform: translateY(var(--nav-menu-translate)) rotate(45deg);
+}
+header > #navMenu.animated > div:nth-child(2) {
+  transform: scale(0);
+}
+header > #navMenu.animated > div:last-child {
+  transform: translateY(calc(var(--nav-menu-translate) * -1)) rotate(-45deg);
 }
 
 header > h1 {
