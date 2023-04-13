@@ -5,6 +5,7 @@ import {
   renderToday,
   removeContent,
   findProjIndex,
+  renderWeek,
 } from "./renderingFunctions";
 import createProject from "./projects";
 import { createProjects } from "./todolist";
@@ -23,6 +24,9 @@ export default function events() {
 
   const showTodayBtn = document.getElementById("today-btn");
   showTodayBtn.addEventListener("click", renderToday);
+
+  const showWeekBtn = document.getElementById("thisWeek-btn");
+  showWeekBtn.addEventListener("click", renderWeek);
 
   const addProjectsBtn = document.getElementById("addProjects");
   addProjectsBtn.addEventListener("click", showAddProjectForm);

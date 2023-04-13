@@ -181,3 +181,57 @@ export function renderToday() {
 
   mainCont.appendChild(todayDiv);
 }
+
+export function renderWeek() {
+  const mainCont = document.querySelector(".main-content");
+  removeContent(mainCont);
+  const todayDiv = document.createElement("div");
+  todayDiv.classList.add("main-content-thisWeek");
+
+  const startDate = new Date();
+  const endDate = new Date();
+  endDate.setDate(endDate.getDate() + 7);
+  const startDateISO = startDate.toISOString();
+  const endDateISO = endDate.toISOString().split("T")[0];
+
+  const projArray = createProjects.getProjects();
+  const filteredProj = projArray.filter((project) =>
+    project.Tasks.some(
+      (task) =>
+        task.DueDate >= startDateISO && task.DueDate.split("T")[0] <= endDateISO
+    )
+  );
+
+  if (filteredProj.length > 0) {
+    const filteredTasks = [];
+    filteredProj.forEach((project) =>
+      project.Tasks.forEach((task) =>
+        task.DueDate >= startDateISO && task.DueDate.split("T")[0] <= endDateISO
+          ? filteredTasks.push(task)
+          : ""
+      )
+    );
+    filteredTasks
+      .sort((a, b) =>
+        a.DueDate > b.DueDate ? 1 : a.DueDate === b.DueDate ? 0 : -1
+      )
+      .forEach((task) => {
+        const todayTaskDiv = document.createElement("div");
+        const todTaskTitle = document.createElement("p");
+        const todTaskDate = document.createElement("p");
+
+        todTaskTitle.textContent = task.Title;
+        todTaskDate.textContent = `${new Date(
+          task.DueDate.split("T")[0]
+        ).toLocaleString("en-us", { weekday: "long" })} ${
+          task.DueDate.split("-")[2].split("T")[0]
+        }.`;
+
+        [todTaskTitle, todTaskDate].forEach((element) =>
+          todayTaskDiv.appendChild(element)
+        );
+        todayDiv.appendChild(todayTaskDiv);
+      });
+  }
+  mainCont.appendChild(todayDiv);
+}
