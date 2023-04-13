@@ -137,3 +137,47 @@ export function renderProjects(project, func) {
   projectDisplayBtn.addEventListener("click", func);
   projectsDiv.appendChild(projectDisplayBtn);
 }
+
+export function renderToday() {
+  const mainCont = document.querySelector(".main-content");
+  removeContent(mainCont);
+  const todayDiv = document.createElement("div");
+  todayDiv.classList.add("main-content-today");
+
+  const projArray = createProjects.getProjects();
+  const filteredProj = projArray.filter((project) =>
+    project.Tasks.some(
+      (task) =>
+        task.DueDate.split("T")[0] === new Date().toISOString().split("T")[0]
+    )
+  );
+  if (filteredProj.length > 0) {
+    const filteredTasks = [];
+    filteredProj.forEach((project) =>
+      project.Tasks.forEach((task) =>
+        task.DueDate.split("T")[0] === new Date().toISOString().split("T")[0]
+          ? filteredTasks.push(task)
+          : ""
+      )
+    );
+    filteredTasks
+      .sort((a, b) =>
+        a.DueDate > b.DueDate ? 1 : a.DueDate === b.DueDate ? 0 : -1
+      )
+      .forEach((task) => {
+        const todayTaskDiv = document.createElement("div");
+        const todTaskTitle = document.createElement("p");
+        const todTaskTime = document.createElement("p");
+
+        todTaskTitle.textContent = task.Title;
+        todTaskTime.textContent = task.DueDate.split("T")[1];
+
+        [todTaskTitle, todTaskTime].forEach((element) =>
+          todayTaskDiv.appendChild(element)
+        );
+        todayDiv.appendChild(todayTaskDiv);
+      });
+  }
+
+  mainCont.appendChild(todayDiv);
+}

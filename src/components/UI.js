@@ -2,6 +2,7 @@ import createTask from "./tasks";
 import {
   renderTasks,
   renderProjects,
+  renderToday,
   removeContent,
   findProjIndex,
 } from "./renderingFunctions";
@@ -19,6 +20,9 @@ export default function events() {
     const mainCont = document.querySelector(".main-content");
     mainCont.classList.toggle("slideOut");
   }
+
+  const showTodayBtn = document.getElementById("today-btn");
+  showTodayBtn.addEventListener("click", renderToday);
 
   const addProjectsBtn = document.getElementById("addProjects");
   addProjectsBtn.addEventListener("click", showAddProjectForm);
@@ -50,7 +54,6 @@ export default function events() {
       renderProjects(addProjInput.value, showProject);
       const newProject = createProject(addProjInput.value);
       createProjects.addProjects(newProject.getInfo());
-      console.log(createProjects.getProjects());
       removeInputVal(addProjInput);
     }
   }
