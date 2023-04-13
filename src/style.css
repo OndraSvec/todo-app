@@ -166,6 +166,9 @@ main > .side-bar > .projects .add-project {
   text-align: left;
   background-color: transparent;
   color: var(--main-blue);
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 main > .side-bar > .projects .add-project:hover,
@@ -367,8 +370,34 @@ main > .main-content.slideOut {
   translate: var(--side-bar);
 }
 
-main > .main-content > .main-content-project {
+main > .main-content > .main-content-project,
+main > .main-content > .main-content-today,
+main > .main-content > .main-content-thisWeek {
   width: var(--project-div-w);
+}
+
+main > .main-content > .main-content-today,
+main > .main-content > .main-content-thisWeek {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--project-header-h) * 0.1);
+  padding: calc(var(--project-header-h) * 0.1);
+  border: var(--project-header-bord) solid var(--main-blue);
+  font-size: var(--sidebar-fs-main);
+}
+
+main > .main-content > .main-content-today > div,
+main > .main-content > .main-content-thisWeek > div {
+  display: flex;
+  justify-content: space-between;
+  gap: calc(var(--project-header-h) * 0.2);
+}
+
+main > .main-content > .main-content-today > div > p:first-child,
+main > .main-content > .main-content-thisWeek > div > p :first-child {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 main > .main-content > .main-content-project > .main-content-project-header {
@@ -387,6 +416,9 @@ main
   > .main-content-project-header
   > h3 {
   font-size: var(--sidebar-fs-main);
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 main
@@ -551,6 +583,9 @@ main
   > .new-task-head
   > p {
   font-size: calc(var(--sidebar-fs-main) * 0.75);
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 main
