@@ -128,3 +128,12 @@ function expandTaskInfo(e) {
     e.target.firstChild.setAttribute("style", "transform: rotate(180deg);");
   }
 }
+
+export function renderProjects(project, func) {
+  const projectDisplayBtn = document.createElement("button");
+  projectDisplayBtn.classList.add("add-project");
+  projectDisplayBtn.textContent = project;
+  const projectsDiv = document.querySelector(".projects-buttons");
+  projectDisplayBtn.addEventListener("click", func);
+  projectsDiv.appendChild(projectDisplayBtn);
+}

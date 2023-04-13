@@ -1,6 +1,7 @@
 import createTask from "./tasks";
 import {
   renderTasks,
+  renderProjects,
   removeContent,
   findProjIndex,
 } from "./renderingFunctions";
@@ -46,7 +47,7 @@ export default function events() {
     const addProjInput = document.getElementById("np-input");
     if (addProjInput.checkValidity()) {
       hideAddProjectForm();
-      displayProjectSideBar(addProjInput.value);
+      renderProjects(addProjInput.value, showProject);
       const newProject = createProject(addProjInput.value);
       createProjects.addProjects(newProject.getInfo());
       console.log(createProjects.getProjects());
@@ -62,15 +63,6 @@ export default function events() {
   function addProjectHandleBtnEvent(target, func) {
     const targetElement = document.getElementById(target);
     targetElement.addEventListener("click", func);
-  }
-
-  function displayProjectSideBar(project) {
-    const projectDisplayBtn = document.createElement("button");
-    projectDisplayBtn.classList.add("add-project");
-    projectDisplayBtn.textContent = project;
-    const projectsDiv = document.querySelector(".projects-buttons");
-    projectDisplayBtn.addEventListener("click", showProject);
-    projectsDiv.appendChild(projectDisplayBtn);
   }
 
   function showProject(e) {
@@ -241,6 +233,6 @@ export default function events() {
     projArr.splice(findProjIndex(), 1);
     removeContent(mainContDiv);
     removeContent(projSideDiv);
-    projArr.forEach((element) => displayProjectSideBar(element.Name));
+    projArr.forEach((element) => renderProjects(element.Name, showProject));
   }
 }
