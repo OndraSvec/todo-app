@@ -11,6 +11,18 @@ import createProject from "./projects";
 import { createProjects } from "./todolist";
 
 export default function events() {
+  document.addEventListener("DOMContentLoaded", () => {
+    if (localStorage.getItem("Projects")) {
+      const loadedStorageArr = JSON.parse(localStorage.getItem("Projects"));
+      loadedStorageArr.forEach((project) =>
+        createProjects.addProjects(project)
+      );
+      const loadedProjects = createProjects.getProjects();
+      loadedProjects.forEach((project) =>
+        renderProjects(project.Name, showProject)
+      );
+    }
+  });
   const navMenu = document.getElementById("navMenu");
   navMenu.addEventListener("click", toggleSBMC);
 
@@ -243,4 +255,13 @@ export default function events() {
     removeContent(projSideDiv);
     projArr.forEach((element) => renderProjects(element.Name, showProject));
   }
+
+  document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState === "hidden") {
+      localStorage.setItem(
+        "Projects",
+        JSON.stringify(createProjects.getProjects())
+      );
+    }
+  });
 }
