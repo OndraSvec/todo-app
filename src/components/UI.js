@@ -213,7 +213,6 @@ export default function events() {
       .find((element) => element.Name === projectToAddTaskDOM);
 
     projectToAddTaskData.Tasks.push(newTask.getInfo());
-    console.log(createProjects.getProjects());
     removeContent(expandedDiv);
     renderTasks(e, projectToAddTaskDOM);
 
