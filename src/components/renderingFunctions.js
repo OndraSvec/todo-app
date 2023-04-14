@@ -1,4 +1,5 @@
 import { createProjects } from "./todolist";
+import "../style.css";
 
 export function renderTasks(e, nodeName) {
   const projectsArray = createProjects.getProjects();

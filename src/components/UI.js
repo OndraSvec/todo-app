@@ -9,6 +9,7 @@ import {
 } from "./renderingFunctions";
 import createProject from "./projects";
 import { createProjects } from "./todolist";
+import "../style.css";
 
 export default function events() {
   document.addEventListener("DOMContentLoaded", () => {
